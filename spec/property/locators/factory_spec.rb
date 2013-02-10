@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Wombat::Property::Locators::Factory do
 	it 'should instantiate correct locator according to property type' do
 		Wombat::Property::Locators::Factory.locator_for(Wombat::DSL::Property.new(nil, nil, :text)).should be_a(Wombat::Property::Locators::Text)
+		Wombat::Property::Locators::Factory.locator_for(Wombat::DSL::Property.new(nil, nil, :number)).should be_a(Wombat::Property::Locators::Number)
+		Wombat::Property::Locators::Factory.locator_for(Wombat::DSL::Property.new(nil, nil, :date)).should be_a(Wombat::Property::Locators::Date)
 		Wombat::Property::Locators::Factory.locator_for(Wombat::DSL::Property.new(nil, nil, :html)).should be_a(Wombat::Property::Locators::Html)
 		Wombat::Property::Locators::Factory.locator_for(Wombat::DSL::Property.new(nil, nil, :list)).should be_a(Wombat::Property::Locators::List)
 		Wombat::Property::Locators::Factory.locator_for(Wombat::DSL::Property.new(nil, nil, :follow)).should be_a(Wombat::Property::Locators::Follow)

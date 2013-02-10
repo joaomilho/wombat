@@ -22,6 +22,17 @@ module Wombat
         end
 
       protected
+        def extract_text context
+          node = locate_nodes(context)
+          node = node.first unless node.is_a?(String)
+
+          if ! node
+            nil
+          else 
+            node.is_a?(String) ? node.strip : node.inner_text.strip
+          end
+        end
+
         def locate_nodes(context)
           @context = context
 
